@@ -46,21 +46,21 @@ app = FastAPI(
 # --------------------------
 
 # List of allowed IP addresses (for now only 127.0.0.1)
-ALLOWED_IPS = ["127.0.0.1"]
+# ALLOWED_IPS = ["127.0.0.1"]
 
-@app.middleware("http")
-async def ip_whitelist_middleware(request: Request, call_next):
-    """
-    Middleware to allow access only from specified IP addresses.
+# @app.middleware("http")
+# async def ip_whitelist_middleware(request: Request, call_next):
+#     """
+#     Middleware to allow access only from specified IP addresses.
 
-    Raises:
-        HTTPException: 403 Forbidden if IP is not allowed.
-    """
-    client_host = request.client.host
-    if client_host not in ALLOWED_IPS:
-        raise HTTPException(status_code=403, detail=f"Access forbidden: IP {client_host} not allowed.")
-    response = await call_next(request)
-    return response
+#     Raises:
+#         HTTPException: 403 Forbidden if IP is not allowed.
+#     """
+#     client_host = request.client.host
+#     if client_host not in ALLOWED_IPS:
+#         raise HTTPException(status_code=403, detail=f"Access forbidden: IP {client_host} not allowed.")
+#     response = await call_next(request)
+#     return response
 
 # --------------------------
 # Request and Response Models
